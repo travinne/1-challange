@@ -37,18 +37,18 @@ ramens.forEach(ramen => {
     const img = document.createElement("img");
     img.src = ramen.image;
     img.alt = ramen.name;
-    img.classList.add("ramen-thumbnail"); // Add a class for styling
+    img.classList.add("ramen-thumbnail")
     img.addEventListener("click", () => handleClick(ramen));
     ramenMenu.appendChild(img);
 });
 
-    // Auto-select the first ramen on page load
+    
     if (ramens.length > 0) {
         handleClick(ramens[0]);
     } else {
         clearRamenDetails();
     }
-// Function to handle clicking on a ramen image
+
 function handleClick(ramen) {
     currentRamen = ramen;
 
@@ -59,7 +59,7 @@ function handleClick(ramen) {
     document.getElementById("ramen-comment").textContent = `Comment: ${ramen.comment}`;
 }
 
-// Function to clear ramen details
+
 function clearRamenDetails() {
     document.getElementById("ramen-image").src = "";
     document.getElementById("ramen-name").textContent = "";
@@ -68,7 +68,7 @@ function clearRamenDetails() {
     document.getElementById("ramen-comment").textContent = "Comment:";
 }
 
-// Function to handle form submission for adding new ramen
+
 function addSubmitListener() {
     const form = document.getElementById("new-ramen-form");
     form.addEventListener("submit", function (event) {
@@ -79,14 +79,14 @@ function addSubmitListener() {
             name: form.name.value.trim(),
             restaurant: form.restaurant.value.trim(),
             image: form.image.value.trim(),
-            rating: parseInt(form.rating.value, 10), // Ensure number
+            rating: parseInt(form.rating.value, 10), 
             comment: form.comment.value.trim()
         };
 
         if (newRamen.name && newRamen.restaurant && newRamen.image) {
             ramens.push(newRamen);
             displayRamen();
-            handleClick(newRamen); // Show new ramen immediately
+            handleClick(newRamen); 
             form.reset();
         } else {
             alert("Please fill out all required fields!");
@@ -94,7 +94,7 @@ function addSubmitListener() {
     });
 }
 
-// Function to handle editing ramen details
+
 function editRamenDetails() {
     const editForm = document.getElementById("edit-ramen-form");
     editForm.addEventListener("submit", function (event) {
@@ -112,7 +112,7 @@ function editRamenDetails() {
     });
 }
 
-// Function to handle deleting a ramen
+
 function deleteRamen() {
     const deleteButton = document.getElementById("delete-ramen");
     deleteButton.addEventListener("click", function () {
@@ -126,7 +126,7 @@ function deleteRamen() {
     });
 }
 
-// Main function to initialize the app
+
 function main() {
     displayRamen();
     addSubmitListener();
